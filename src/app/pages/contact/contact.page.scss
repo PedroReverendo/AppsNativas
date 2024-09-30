@@ -1,0 +1,45 @@
+ion-content {
+    --background: white;
+  }
+  
+  #barraNav{
+    --background: black;
+  }
+  
+  #logo{
+    width: 60px;
+    height: auto;
+  }
+  
+  #contacto{
+    color: black;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  ion-textarea {
+    --placeholder-color: black;
+  }
+  
+  .info{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+  }
+  
+  .subtitulo{
+    color: black;
+  }
+  
+  #mensaje{
+    height: 200px;
+  }
+  
+  #botonEnvio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }

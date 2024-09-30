@@ -1,0 +1,42 @@
+<!-- navbar.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <!-- Logo en el lado izquierdo -->
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <img src="../../../assets/img/LOGO 1.png" alt="Logo" class="logo-img" />
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Botón del carrito -->
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCart()">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+
+      <!-- Menú hamburguesa -->
+      <ion-menu-button auto-hide="false">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-menu side="start" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="goToHome()">Home</ion-item>
+      <ion-item (click)="goToContact()">Contact</ion-item>
+      <ion-item (click)="goToCart()">Carrito</ion-item>
+      <ion-item (click)="goToSelecciones()">Selecciones</ion-item>
+      <ion-item (click)="goTosudamericanas()">Sudamericanas</ion-item>
+      <ion-item (click)="goToEuropeas()">Europeas</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

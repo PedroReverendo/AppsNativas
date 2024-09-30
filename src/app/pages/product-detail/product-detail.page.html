@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<ion-content>
+
+  <ion-searchbar placeholder="¿Qué estás buscando?"></ion-searchbar>
+
+  <div class="breadcrumb">
+    Inicio > CAMISETAS > CAMISETAS SUDAMÉRICA > CAMISETA BELGRANO 2011
+  </div>
+
+  <div class="product-container" *ngFor="let product of products">
+    <div class="product-image">
+      <img src="../../../assets/img/CAMISETAS RETRO SELECCIONES.png" alt="Camiseta Belgrano 2011" />
+    </div>
+
+    <div class="product-info" id="main-content">
+      <h1>Camiseta Belgrano 2011</h1>
+      <p class="price">$21.999,00</p>
+      <p class="price-discount">$19.999,00 con Transferencia o depósito bancario</p>
+      <p class="discount-info">10% de descuento pagando con Transferencia o depósito bancario</p>
+
+      <div class="size-section">
+        <label for="size">TALLE</label>
+        <ion-select id="size" placeholder="XL">
+          <ion-select-option value="S">S</ion-select-option>
+          <ion-select-option value="M">M</ion-select-option>
+          <ion-select-option value="L">L</ion-select-option>
+          <ion-select-option value="XL">XL</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="price-final">
+        <p class="final-price">$21.999,00</p>
+      </div>
+
+      <ion-button expand="block" (click)="addToCart(product.id)">
+        Agregar al carrito
+      </ion-button>
+      
+
+      <div class="shipping-calculator">
+        <ion-input placeholder="Tu código postal"></ion-input>
+        <ion-button color="dark">Calcular</ion-button>
+      </div>
+
+      <ul class="product-details">
+        <li>Métodos de envío: Correo argentino, DHL</li>
+        <li>Compras protegidas: Si no te llega, puedes cancelar o devolver</li>
+      </ul>
+
+      <p>(Los modelos ¨Sudamerica¨ son camisetas particulares que representan las casacas que habia en 2011, ya que su silueta es muy acorde a la de la época. No son remeras oficiales que usaron los jugadores, si no mas bien que salieron para los hinchas y los amantes de esta silueta)</p>
+    </div>
+  </div>
+
+</ion-content>
