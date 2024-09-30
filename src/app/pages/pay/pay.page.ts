@@ -30,7 +30,6 @@ export class PayPage implements OnInit {
             text: 'Confirmar',
             handler: () => {
               console.log('Compra confirmada');
-              // Aquí puedes agregar lógica adicional para procesar la compra
             }
           }
         ]
