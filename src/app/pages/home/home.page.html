@@ -37,7 +37,24 @@
         </ion-card>
       </ion-col>
     </ion-row>
-    
+
+    <!-- Mostrar productos cargados desde el back-end -->
+    <ion-row>
+      <ion-col size="12">
+        <h2>Productos disponibles</h2>
+        <ion-card *ngFor="let producto of productos">
+          <ion-card-header>
+            <ion-card-title>{{ producto.Nombre }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <img *ngIf="producto.FotoUrl" [src]="producto.FotoUrl" alt="Producto" />
+            <p>{{ producto.Descripcion }}</p>
+            <p>Precio: {{ producto.Precio | currency }}</p>
+            <p>Talle: {{ producto.Talle }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
   <div class="contact-section">
@@ -47,5 +64,4 @@
     </ion-item>
     <ion-button expand="block" color="dark">Enviar</ion-button>
   </div>
-
 </ion-content>
