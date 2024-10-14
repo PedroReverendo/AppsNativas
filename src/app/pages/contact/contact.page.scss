@@ -1,45 +1,41 @@
-ion-content {
-    --background: white;
-  }
+#barraNav{
+  --background: black;
+}
   
-  #barraNav{
-    --background: black;
-  }
+#logo{
+  width: 60px;
+  height: auto;
+}
   
-  #logo{
-    width: 60px;
-    height: auto;
-  }
+#contacto{
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 100px;
+}
+
   
-  #contacto{
-    color: black;
-    font-weight: bold;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 100px;
-  }
+.info{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+}
   
-  ion-textarea {
-    --placeholder-color: black;
-  }
+.texto{
+ --color: light;
+}
+
+ion-textarea{
+  color: light;
+}
+
+#mensaje{
+  height: 200px;
+}
   
-  .info{
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 50px;
-  }
-  
-  .subtitulo{
-    color: black;
-  }
-  
-  #mensaje{
-    height: 200px;
-  }
-  
-  #botonEnvio{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
+#botonEnvio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}

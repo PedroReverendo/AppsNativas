@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<ion-content id="main-content"> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="product-col" *ngFor="let producto of productos">
+        <ion-card class="product-card">
+          <img *ngIf="producto.FotoUrl" [src]="producto.FotoUrl" alt="Producto" class="product-image"/>
+          <ion-card-content>
+            <h3 class="product-title">{{ producto.Nombre }}</h3>
+            <p class="product-price">{{ producto.Precio | currency}}</p>
+            <p class="product-discount">
+              {{ calcularDescuento(producto.Precio, 0.15) | currency }} con Transferencia o depósito bancario
+            </p>
+            <div class="buttons">
+              <ion-button expand="block" fill="solid" class="buy-button">Comprar</ion-button>
+              <ion-button fill="outline" class="details-button">
+                <ion-icon name="eye"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-content>

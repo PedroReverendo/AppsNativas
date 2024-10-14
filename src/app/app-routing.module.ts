@@ -30,6 +30,14 @@ const routes: Routes = [
   {
     path: 'product-detail/:id', // Usa un parámetro para identificar el producto
     loadChildren: () => import('./pages/product-detail/product-detail.module').then(m => m.ProductDetailPageModule)
+  },
+  {
+    path: 'europeas',
+    loadChildren: () => import('./pages/europeas/europeas.module').then( m => m.EuropeasPageModule)
+  },
+  {
+    path: 'sudamericana',
+    loadChildren: () => import('./pages/sudamericana/sudamericana.module').then( m => m.SudamericanaPageModule)
   }
 ];
 
