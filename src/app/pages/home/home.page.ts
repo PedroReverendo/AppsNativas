@@ -27,18 +27,22 @@ export class HomePage {
   }
 
   loadProductos() {
-    this.service.getProductos().subscribe(data => {
-      this.productos = data.map((producto: any) => {
+    this.service.getProductos().subscribe(callback => {
+
+      this.productos = callback.map((producto: any) => {
         // Convertir la imagen de binario a base64
         if (producto.Foto) {
           const base64String = btoa(
-            new Uint8Array(producto.Foto.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+            new Uint8Array(producto.Foto.data).reduce((callback2, byte) => callback2 + String.fromCharCode(byte), '')
           );
           producto.FotoUrl = this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64String}`);
         }
         return producto;
       });
+
       console.log(this.productos);
+
+      
     }, error => {
       console.error('Error loading productos', error);
     });

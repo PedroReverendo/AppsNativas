@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<ion-content>
+
+  <ion-item>
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-item>
+
+  <form (submit)="iniciarSesion()">
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="text" [(ngModel)]="email" name="email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="pass" name="pass" required></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
+  </form>
+
+</ion-content>
