@@ -13,22 +13,22 @@ export class NavbarComponent implements OnInit {
   constructor(private navCtrl: NavController) {}
   
   goToCart() {
-    this.navCtrl.navigateForward('/cart');
+    this.navCtrl.navigateForward('/cart', { replaceUrl: true });
   }
   goToHome() {
-    this.navCtrl.navigateForward('/home');
+    this.navCtrl.navigateForward('/home', { replaceUrl: true });
   }
   goToContact() {
-    this.navCtrl.navigateForward('/contact');
+    this.navCtrl.navigateForward('/contact', { replaceUrl: true });
   }
   goToSelecciones() {
-    this.navCtrl.navigateForward('/selecciones');
+    this.navCtrl.navigateForward('/selecciones', { replaceUrl: true });
   }
   goTosudamericanas() {
-    this.navCtrl.navigateForward('/');
+    this.navCtrl.navigateForward('/sudamericana', { replaceUrl: true });
   }
   goToEuropeas() {
-    this.navCtrl.navigateForward('/');
+    this.navCtrl.navigateForward('/europeas', { replaceUrl: true });
   }
 
   ngOnInit() { }

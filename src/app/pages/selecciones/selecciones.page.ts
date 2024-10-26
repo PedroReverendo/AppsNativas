@@ -25,10 +25,19 @@ export class SeleccionesPage implements OnInit {
   }
 
   loadProducts() {
-    this.service.getProductos().subscribe((products: any[]) => {
-      this.products = products;
+    // Primero, intenta obtener productos de memoria
+    const productosEnMemoria = this.service.getProductosEnMemoria();
+    if (productosEnMemoria.length > 0) {
+      this.products = productosEnMemoria;
       this.combineData();
-    });
+    } else {
+      // Si no hay productos en memoria, obténlos desde el API
+      this.service.getProductos().subscribe((products: any[]) => {
+        this.service.setProductos(products); // Guardar en memoria
+        this.products = products;
+        this.combineData();
+      });
+    }
   }
 
   loadTeams() {
@@ -59,8 +68,7 @@ export class SeleccionesPage implements OnInit {
   }
 
   calculateTransferPrice(originalPrice: number): number {
-    // Aplicar un descuento del 10% para transferencias bancarias
-    return originalPrice * 0.9;
+    return originalPrice * 0.9; // Descuento del 10%
   }
 
   filterProducts(event: any) {

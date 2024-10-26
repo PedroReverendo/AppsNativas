@@ -1,26 +1,70 @@
 ion-content {
-    --background: #000000; 
-    color: white; 
+  --background: #000000;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.nav-links {
+  color: #666666;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+.login-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 25px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
   }
+}
+
+.custom-input {
+  --background: transparent;
+  --color: #ffffff;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --placeholder-color: #666666;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  height: 50px;
+  width: 100%;
+}
+
+.password-input-container {
+  position: relative;
   
-  ion-item {
-    --color: white; 
-    --background: transparent; 
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00ffd5;
+    font-size: 20px;
+    z-index: 10;
+    cursor: pointer;
   }
-  
-  ion-label {
-    color: white;
-  }
-  
-  ion-input {
-    color: white; 
-  }
-  
-  ion-title {
-    color: white; 
-  }
-  
-  ion-button {
-    --background: #00BFFF; 
-    --color: white;
-  }
+}
+
+.login-button {
+  --background: #00ffd5;
+  --color: #000000;
+  --border-radius: 25px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}

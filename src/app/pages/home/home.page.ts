@@ -34,25 +34,34 @@ export class HomePage {
     this.navCtrl.navigateForward('/europeas');
   }
 
-
   loadProductos() {
-    this.service.getProductos().subscribe(callback => {
-      this.productos = callback.map((producto: any) => {
-        // Convertir la imagen de binario a base64
-        if (producto.Foto) {
-          const base64String = btoa(
-            new Uint8Array(producto.Foto.data).reduce((callback2, byte) => callback2 + String.fromCharCode(byte), '')
-          );
-          producto.FotoUrl = this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64String}`);
-        }
-        return producto;
-      });
+    // Verifica si ya hay productos en memoria
+    this.productos = this.service.getProductosEnMemoria();
+    if (this.productos.length === 0) {
+      // Si no hay productos en memoria, haz la solicitud GET
+      this.service.getProductos().subscribe(callback => {
+        this.productos = callback.map((producto: any) => {
+          if (producto.Foto) {
+            const base64String = btoa(
+              new Uint8Array(producto.Foto.data).reduce((callback2, byte) => callback2 + String.fromCharCode(byte), '')
+            );
+            producto.FotoUrl = this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64String}`);
+          }
+          return producto;
+        });
 
-      // Seleccionar 5 productos aleatorios
+        // Almacena los productos en memoria
+        this.service.setProductos(this.productos);
+
+        // Seleccionar 5 productos aleatorios
+        this.productosSugeridos = this.getRandomProductos(5);
+      }, error => {
+        console.error('Error loading productos', error);
+      });
+    } else {
+      // Si hay productos en memoria, selecciona 5 aleatorios
       this.productosSugeridos = this.getRandomProductos(5);
-    }, error => {
-      console.error('Error loading productos', error);
-    });
+    }
   }
 
   getRandomProductos(count: number): any[] {

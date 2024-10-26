@@ -25,10 +25,19 @@ export class EuropeasPage implements OnInit {
   }
 
   loadProducts() {
-    this.service.getProductos().subscribe((products: any[]) => {
-      this.products = products;
+    // Primero, intenta obtener productos de memoria
+    const productosEnMemoria = this.service.getProductosEnMemoria();
+    if (productosEnMemoria.length > 0) {
+      this.products = productosEnMemoria;
       this.combineData();
-    });
+    } else {
+      // Si no hay productos en memoria, obténlos desde el API
+      this.service.getProductos().subscribe((products: any[]) => {
+        this.service.setProductos(products); // Guardar en memoria
+        this.products = products;
+        this.combineData();
+      });
+    }
   }
 
   loadTeams() {

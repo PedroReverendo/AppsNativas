@@ -11,6 +11,7 @@ export class LogInPage implements OnInit {
   public usuarios: any[] = [];
   public email: string = '';
   public pass: string = '';
+  public showPassword: boolean = false;
 
   constructor(private service: ServiceService, private router: Router) {}
 
@@ -30,15 +31,17 @@ export class LogInPage implements OnInit {
     );
   }
 
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
   iniciarSesion() {
-    // Verificar si los datos ingresados coinciden con algún usuario en la base de datos
     const usuarioEncontrado = this.usuarios.find(
       (usuario) =>
         usuario.email === this.email && usuario.password === this.pass
     );
 
     if (usuarioEncontrado) {
-      // Redirige a la página de Home si la autenticación es correcta
       this.router.navigate(['/home']);
     } else {
       alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');

@@ -1,20 +1,45 @@
-<app-navbar></app-navbar>
-<ion-content>
+<ion-content class="ion-padding">
+  <div class="nav-links">
+    Inicio > Mi Cuenta > Login
+  </div>
 
-  <ion-item>
-    <ion-title>Iniciar sesión</ion-title>
-  </ion-item>
+  <div class="login-container">
+    <h1>Iniciá sesión</h1>
 
-  <form (submit)="iniciarSesion()">
-    <ion-item>
-      <ion-label>E-mail</ion-label>
-      <ion-input type="text" [(ngModel)]="email" name="email" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="pass" name="pass" required></ion-input>
-    </ion-item>
-    <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
-  </form>
+    <form (submit)="iniciarSesion()">
+      <div class="form-group">
+        <label>Email</label>
+        <ion-input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          class="custom-input"
+          required>
+        </ion-input>
+      </div>
 
+      <div class="form-group">
+        <label>Contraseña</label>
+        <div class="password-input-container">
+          <ion-input 
+            [type]="showPassword ? 'text' : 'password'" 
+            [(ngModel)]="pass" 
+            name="pass" 
+            class="custom-input"
+            required>
+          </ion-input>
+          <ion-icon 
+            [name]="showPassword ? 'eye' : 'eye-off'"
+            (click)="togglePassword()"
+            class="password-toggle">
+          </ion-icon>
+        </div>
+      </div>
+
+
+      <ion-button expand="block" type="submit" class="login-button">
+        INICIAR SESIÓN
+      </ion-button>
+    </form>
+  </div>
 </ion-content>
