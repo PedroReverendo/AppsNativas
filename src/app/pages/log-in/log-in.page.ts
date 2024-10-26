@@ -34,7 +34,7 @@ export class LogInPage implements OnInit {
     // Verificar si los datos ingresados coinciden con algún usuario en la base de datos
     const usuarioEncontrado = this.usuarios.find(
       (usuario) =>
-        usuario.Email === this.email && usuario.Contrasena === this.pass
+        usuario.email === this.email && usuario.password === this.pass
     );
 
     if (usuarioEncontrado) {

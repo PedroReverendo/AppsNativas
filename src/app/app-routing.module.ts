@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductDetailPage } from './pages/product-detail/product-detail.page';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'log-in',
     pathMatch: 'full'
   },
   {
@@ -21,23 +22,27 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'selecciones',
-    loadChildren: () => import('./pages/selecciones/selecciones.module').then( m => m.SeleccionesPageModule)
+    loadChildren: () => import('./pages/selecciones/selecciones.module').then(m => m.SeleccionesPageModule)
   },
   {
-    path: 'product-detail/:id', // Usa un parámetro para identificar el producto
+    path: 'product-detail/:id',
     loadChildren: () => import('./pages/product-detail/product-detail.module').then(m => m.ProductDetailPageModule)
   },
   {
     path: 'europeas',
-    loadChildren: () => import('./pages/europeas/europeas.module').then( m => m.EuropeasPageModule)
+    loadChildren: () => import('./pages/europeas/europeas.module').then(m => m.EuropeasPageModule)
   },
   {
     path: 'sudamericana',
-    loadChildren: () => import('./pages/sudamericana/sudamericana.module').then( m => m.SudamericanaPageModule)
+    loadChildren: () => import('./pages/sudamericana/sudamericana.module').then(m => m.SudamericanaPageModule)
+  },
+  {
+    path: 'log-in',
+    loadChildren: () => import('./pages/log-in/log-in.module').then(m => m.LogInPageModule)
   }
 ];
 

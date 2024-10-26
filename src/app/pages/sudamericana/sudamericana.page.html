@@ -1,26 +1,44 @@
 <app-navbar></app-navbar>
 
-<ion-content id="main-content"> 
+<ion-content id="main-content" class="dark-theme">
+  <div class="search-container">
+    <ion-searchbar 
+      class="custom-searchbar" 
+      placeholder="¿Qué estás buscando?" 
+      (ionInput)="filterProducts($event)">
+    </ion-searchbar>
+  </div>
+
+  <div class="header-container">
+    <h1 class="section-title">SUDAMERICANAS</h1>
+    <ion-button class="filter-button" fill="outline">
+      Filtrar <ion-icon name="filter"></ion-icon>
+    </ion-button>
+  </div>
+
   <ion-grid>
     <ion-row>
-      <ion-col size="12" class="product-col" *ngFor="let producto of productos">
-        <ion-card class="product-card">
-          <img *ngIf="producto.FotoUrl" [src]="producto.FotoUrl" alt="Producto" class="product-image"/>
-          <ion-card-content>
-            <h3 class="product-title">{{ producto.Nombre }}</h3>
-            <p class="product-price">{{ producto.Precio | currency}}</p>
-            <p class="product-discount">
-              {{ calcularDescuento(producto.Precio, 0.20) | currency }} con Transferencia o depósito bancario
+      <ion-col size="6" *ngFor="let product of filteredProducts">
+        <div class="product-card">
+          <div class="product-image-container">
+            <img *ngIf="product.FotoUrl" [src]="product.FotoUrl" alt="Producto" class="product-image" />
+          </div>
+          <div class="product-info">
+            <h4 class="product-title">{{ product.Nombre }}</h4>
+            <p class="product-description">{{ product.Descripcion }}</p>
+            <p class="product-price">${{ product.Precio }}</p>
+            <p class="product-discount" *ngIf="product.PrecioTransferencia">
+              ${{ product.PrecioTransferencia }} con Transferencia o depósito bancario
             </p>
-            <div class="buttons">
-              <ion-button expand="block" fill="solid" class="buy-button">Comprar</ion-button>
-              <ion-button fill="outline" class="details-button">
-                <ion-icon name="eye"></ion-icon>
+            <div class="button-container">
+              <ion-button (click)="goToProductDetail(product.ID_Producto)" class="buy-button" expand="block">COMPRAR</ion-button>
+              <ion-button (click)="goToProductDetail(product.ID_Producto)" class="details-button" fill="clear">
+                <ion-icon name="eye-outline"></ion-icon>
               </ion-button>
             </div>
-          </ion-card-content>
-        </ion-card>
+          </div>
+        </div>
       </ion-col>
     </ion-row>
-  </ion-grid>  
+  </ion-grid>
 </ion-content>

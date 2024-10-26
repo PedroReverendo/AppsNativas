@@ -1,8 +1,7 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { ServiceService } from '../../service.service';
-
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -11,24 +10,33 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class HomePage {
   public productos: any[] = [];
-  
+  public productosSugeridos: any[] = [];
+
   constructor(
     private navCtrl: NavController,
     private service: ServiceService,
     private sanitizer: DomSanitizer
   ) {}
 
-  goToSelecciones() {
-    this.navCtrl.navigateForward('/selecciones');
-  }
-
   ngOnInit() {
     this.loadProductos();
   }
 
+  goToSelecciones() {
+    this.navCtrl.navigateForward('/selecciones');
+  }
+
+  goToSudamericana() {
+    this.navCtrl.navigateForward('/sudamericana');
+  }
+
+  goToEuropeas() {
+    this.navCtrl.navigateForward('/europeas');
+  }
+
+
   loadProductos() {
     this.service.getProductos().subscribe(callback => {
-
       this.productos = callback.map((producto: any) => {
         // Convertir la imagen de binario a base64
         if (producto.Foto) {
@@ -40,11 +48,15 @@ export class HomePage {
         return producto;
       });
 
-      console.log(this.productos);
-
-      
+      // Seleccionar 5 productos aleatorios
+      this.productosSugeridos = this.getRandomProductos(5);
     }, error => {
       console.error('Error loading productos', error);
     });
+  }
+
+  getRandomProductos(count: number): any[] {
+    const shuffled = [...this.productos].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
   }
 }

@@ -1,54 +1,55 @@
 <app-navbar></app-navbar>
-<ion-content>
 
-  <ion-searchbar placeholder="¿Qué estás buscando?"></ion-searchbar>
-
-  <div class="breadcrumb">
-    Inicio > CAMISETAS > CAMISETAS SUDAMÉRICA > CAMISETA BELGRANO 2011
-  </div>
-
-  <div class="product-container" *ngFor="let product of products">
-    <div class="product-image">
-      <img src="../../../assets/img/CAMISETAS RETRO SELECCIONES.png" alt="Camiseta Belgrano 2011" />
+<ion-content *ngIf="product" class="dark-theme">
+  <div class="product-container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <span>Inicio</span> > 
+      <span>CAMISETAS</span> > 
+      <span>CAMISETAS RETRO</span> > 
+      <span>SELECCIONES</span> >
+      <span class="current">{{ product.Nombre }}</span>
     </div>
 
-    <div class="product-info" id="main-content">
-      <h1>Camiseta Belgrano 2011</h1>
-      <p class="price">$21.999,00</p>
-      <p class="price-discount">$19.999,00 con Transferencia o depósito bancario</p>
-      <p class="discount-info">10% de descuento pagando con Transferencia o depósito bancario</p>
-
-      <div class="size-section">
-        <label for="size">TALLE</label>
-        <ion-select id="size" placeholder="XL">
-          <ion-select-option value="S">S</ion-select-option>
-          <ion-select-option value="M">M</ion-select-option>
-          <ion-select-option value="L">L</ion-select-option>
-          <ion-select-option value="XL">XL</ion-select-option>
-        </ion-select>
+    <!-- Product Image and Info -->
+    <div class="content-wrapper">
+      <div class="product-image">
+        <img [src]="product.FotoUrl" [alt]="product.Nombre" />
       </div>
 
-      <div class="price-final">
-        <p class="final-price">$21.999,00</p>
+      <div class="product-info">
+        <h1>{{ product.Nombre }}</h1>
+        
+        <div class="price-container">
+          <p class="main-price">${{ product.Precio }}</p>
+          <p class="transfer-price">${{ calculateTransferPrice(product.Precio) }} con Transferencia o depósito bancario</p>
+          <p class="discount-tag">10% de descuento pagando con Transferencia o depósito bancario</p>
+        </div>
+
+        <div class="size-selector">
+          <p class="size-label">Talle:</p>
+          <ion-select [(ngModel)]="selectedTalle" interface="action-sheet" class="custom-select">
+            <ion-select-option *ngFor="let talle of availableSizes">{{ talle }}</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="quantity-selector">
+          <div class="quantity-controls">
+            <button (click)="decrementQuantity()" class="quantity-btn">-</button>
+            <span class="quantity-value">{{ quantity }}</span>
+            <button (click)="incrementQuantity()" class="quantity-btn">+</button>
+          </div>
+          <ion-button expand="block" class="add-to-cart-btn" (click)="addToCart()">
+            AGREGAR AL CARRITO
+          </ion-button>
+        </div>
+
+        <div class="details-button">
+          <ion-button expand="block" fill="clear" class="view-details-btn">
+            Ver más detalles
+          </ion-button>
+        </div>
       </div>
-
-      <ion-button expand="block" (click)="addToCart(product.id)">
-        Agregar al carrito
-      </ion-button>
-      
-
-      <div class="shipping-calculator">
-        <ion-input placeholder="Tu código postal"></ion-input>
-        <ion-button color="dark">Calcular</ion-button>
-      </div>
-
-      <ul class="product-details">
-        <li>Métodos de envío: Correo argentino, DHL</li>
-        <li>Compras protegidas: Si no te llega, puedes cancelar o devolver</li>
-      </ul>
-
-      <p>(Los modelos ¨Sudamerica¨ son camisetas particulares que representan las casacas que habia en 2011, ya que su silueta es muy acorde a la de la época. No son remeras oficiales que usaron los jugadores, si no mas bien que salieron para los hinchas y los amantes de esta silueta)</p>
     </div>
   </div>
-
 </ion-content>

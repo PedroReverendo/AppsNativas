@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
- 
+
 <ion-content id="main-content">
   <div class="hero-section">
     <img src="../../../assets/img/banner appsnativas.png" alt="Hero" class="hero-image" />
@@ -18,14 +18,18 @@
     <ion-row>
       <ion-col size="12">
         <h2>CAMISETAS RETRO SUDAMERICANAS</h2>
+        <ion-card (click)="goToSudamericana()">
         <img src="../../../assets/img/CAMISETAS RETRO SUDAMERICANAS.png" alt="Sudamerican Jerseys" class="category-image" />
+      </ion-card>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col size="12">
         <h2>CAMISETAS RETRO EUROPEAS</h2>
+        <ion-card (click)="goToEuropeas()">
         <img src="../../../assets/img/CAMISETAS RETRO EUROPEAS.png" alt="European Jerseys" class="category-image" />
+      </ion-card>
       </ion-col>
     </ion-row>
 
@@ -38,23 +42,17 @@
       </ion-col>
     </ion-row>
 
-    <!-- Mostrar productos cargados desde el back-end -->
-    <ion-row>
-      <ion-col size="12">
-        <h2>Productos disponibles</h2>
-        <ion-card *ngFor="let producto of productos">
-          <ion-card-header>
-            <ion-card-title>{{ producto.Nombre }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <img *ngIf="producto.FotoUrl" [src]="producto.FotoUrl" alt="Producto" />
-            <p>{{ producto.Descripcion }}</p>
-            <p>Precio: {{ producto.Precio | currency }}</p>
-            <p>Talle: {{ producto.Talle }}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+    <!-- Carrusel de productos sugeridos -->
+    <h2>SUGERENCIAS</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel">
+
+        <div class="carousel-item" *ngFor="let producto of productosSugeridos">
+          <img *ngIf="producto.FotoUrl" [src]="producto.FotoUrl" alt="Producto" class="carousel-image" />
+          <p class="carousel-title">{{ producto.Nombre }}</p>
+        </div>
+      </div>
+    </div>
   </ion-grid>
 
   <div class="contact-section">

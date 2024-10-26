@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+
+interface CartItem {
+  ID_Producto: number;
+  Nombre: string;
+  Precio: number;
+  selectedTalle: string;
+  quantity: number;
+}
 
 @Component({
   selector: 'app-cart',
@@ -7,29 +16,80 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./cart.page.scss'],
 })
 export class CartPage implements OnInit {
+  cartItems: CartItem[] = [];
 
-  cartItems = [
-    { id: 1, name: 'Camiseta Francia 1998', price: 21999, quantity: 1 },
-    { id: 2, name: 'Camiseta Brasil 2002', price: 21999, quantity: 1 },
+  constructor(
+    private navCtrl: NavController,
+    private alertController: AlertController
+  ) {}
 
-  ];
-
-  constructor(private navCtrl: NavController) {}
-
-  ngOnInit() {}
-
-  goToPay() {
-    this.navCtrl.navigateForward('/pay');
+  ngOnInit() {
+    this.loadCartItems();
   }
 
-  // Función para calcular el total
-  getTotal() {
-    return this.cartItems.reduce((i, j) => i + j.price * j.quantity, 0);
+  loadCartItems() {
+    try {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        this.cartItems = JSON.parse(storedCart);
+        console.log('Carrito cargado:', this.cartItems);
+      }
+    } catch (error) {
+      console.error('Error al cargar el carrito:', error);
+      this.cartItems = [];
+    }
   }
 
-  // Función para vaciar el carrito
+  updateQuantity(productId: number, talle: string, change: number) {
+    this.cartItems = this.cartItems.map(item => {
+      if (item.ID_Producto === productId && item.selectedTalle === talle) {
+        const newQuantity = Math.max(1, item.quantity + change);
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    this.saveCart();
+  }
+
+  async confirmClearCart() {
+    const alert = await this.alertController.create({
+      header: 'Confirmar',
+      message: '¿Estás seguro que deseas vaciar el carrito?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.clearCart();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   clearCart() {
     this.cartItems = [];
+    localStorage.removeItem('cart');
   }
 
+  getSubtotal() {
+    return this.cartItems.reduce((total, item) => total + (item.Precio * item.quantity), 0);
+  }
+
+  getTotal() {
+    return this.getSubtotal();
+  }
+
+  saveCart() {
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+  }
+
+  goToPay() {
+    console.log('Compra confirmada', this.cartItems);
+    this.navCtrl.navigateForward('/pay');
+  }
 }

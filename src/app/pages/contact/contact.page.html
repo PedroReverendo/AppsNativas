@@ -5,23 +5,23 @@
 
 <div class="info" id="main-content">
 <h4 class="subtitulo">Nombre</h4>
-<ion-textarea label="Inserte su Nombre" labelPlacement="floating" fill="outline" placeholder="Inserte su Nombre" class="texto"></ion-textarea>
+<ion-textarea label="Inserte su Nombre" labelPlacement="floating" fill="outline" placeholder="Inserte su Nombre" class="texto" [(ngModel)]="nombre"></ion-textarea>
 
 <h4 class="subtitulo">Apellido</h4>
-<ion-textarea label="Inserte su Apellido" labelPlacement="floating" fill="outline" placeholder="Inserte su Apellido" class="texto"></ion-textarea>
+<ion-textarea label="Inserte su Apellido" labelPlacement="floating" fill="outline" placeholder="Inserte su Apellido" class="texto" [(ngModel)]="apellido"></ion-textarea>
 
 <h4 class="subtitulo">Email</h4>
-<ion-textarea label="Inserte su email" labelPlacement="floating" fill="outline" placeholder="Inserte su email" class="texto"></ion-textarea>
+<ion-textarea label="Inserte su email" labelPlacement="floating" fill="outline" placeholder="Inserte su email" class="texto" [(ngModel)]="email"></ion-textarea>
 
 <h4 class="subtitulo">Telefono</h4>
-<ion-textarea label="Inserte su telefono" labelPlacement="floating" fill="outline" placeholder="Inserte su telefono" class="texto"></ion-textarea>
+<ion-textarea label="Inserte su telefono" labelPlacement="floating" fill="outline" placeholder="Inserte su telefono" class="texto" [(ngModel)]="telefono"></ion-textarea>
 
 <h4 class="subtitulo">Mensaje</h4>
-<ion-textarea label="Inserte su mensaje" labelPlacement="floating" fill="outline" placeholder="Inserte su mensaje" class="texto" id="mensaje"></ion-textarea>
+<ion-textarea label="Inserte su mensaje" labelPlacement="floating" fill="outline" placeholder="Inserte su mensaje" class="texto" id="mensaje" [(ngModel)]="mensaje"></ion-textarea>
 </div>
 
 <div id="botonEnvio">
-<ion-button>Enviar</ion-button>
+<ion-button (click)="guardarInfo()">Enviar</ion-button>
 </div>
 
 </ion-content>
