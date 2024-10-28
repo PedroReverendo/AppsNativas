@@ -25,15 +25,15 @@ export class EuropeasPage implements OnInit {
   }
 
   loadProducts() {
-    // Primero, intenta obtener productos de memoria
+    //intenta obtener productos de memoria
     const productosEnMemoria = this.service.getProductosEnMemoria();
     if (productosEnMemoria.length > 0) {
       this.products = productosEnMemoria;
       this.combineData();
     } else {
-      // Si no hay productos en memoria, obténlos desde el API
+      // Si no hay productos en memoria, sacalos desde la api
       this.service.getProductos().subscribe((products: any[]) => {
-        this.service.setProductos(products); // Guardar en memoria
+        this.service.setProductos(products);
         this.products = products;
         this.combineData();
       });

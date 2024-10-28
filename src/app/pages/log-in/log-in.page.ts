@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; //por defecto
+
 import { ServiceService } from '../../service.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-in.page.scss'],
 })
 export class LogInPage implements OnInit {
+
   public usuarios: any[] = [];
   public email: string = '';
   public pass: string = '';

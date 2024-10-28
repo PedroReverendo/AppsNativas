@@ -25,7 +25,6 @@ export class ContactPage implements OnInit {
   guardarInfo(){
     this.datosEnviados = [];
     this.datosEnviados.push(this.nombre,this.apellido,this.email,this.telefono,this.mensaje);
-    // console.log("Nombre a mandar: " + this.Nombre);
     this.cs.guardarInfo(this.datosEnviados).subscribe(() =>{
       alert("Informacion de contacto registrada!")
       

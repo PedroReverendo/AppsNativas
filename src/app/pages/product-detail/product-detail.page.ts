@@ -67,7 +67,7 @@ export class ProductDetailPage implements OnInit {
 
   // Función para optimizar el objeto del carrito
   private optimizeCartItem(product: any) {
-    // Solo guardamos los campos necesarios
+    // Solo guardamos los campos necesarios, no utilizamos la imagen para no hacer que los tiempos de carga sean mayores.
     return {
       ID_Producto: product.ID_Producto,
       Nombre: product.Nombre,
@@ -76,7 +76,7 @@ export class ProductDetailPage implements OnInit {
       quantity: product.quantity
     };
   }
-
+  //mensaje
   async presentToast(message: string, color: string = 'primary') {
     const toast = await this.toastController.create({
       message: message,
@@ -87,6 +87,7 @@ export class ProductDetailPage implements OnInit {
     toast.present();
   }
 
+  //funcion asincrona para mejorar optimizacion del navegador.
   async addToCart() {
     if (!this.selectedTalle) {
       await this.presentToast('Por favor selecciona un talle', 'warning');

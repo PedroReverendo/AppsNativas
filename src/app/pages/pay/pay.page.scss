@@ -1,106 +1,102 @@
-#container {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+:host {
+  --ion-background-color: #000000;
+  --ion-text-color: #ffffff;
+  --ion-color-primary: #00ffdd;
+  --border-color: #2f2f2f;
+}
+
+ion-content {
+  --background: #000000;
+  --padding-top: 20px;
   
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-    color: #8c8c8c;
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  
-  #barraNav{
-    --background: black;
-  }
-  
-  .descuento {
-    color: #00d9ff;
-  }
-  
-  #logo{
-    width: 60px;
-    height: auto;
-  }
-  
-  .titulo{
-    font-weight: bold;
-    font-style: italic;
-  }
-  
-  .MDP{
-    padding: 50px;
-  }
-  
-  .iconMDP{
-    margin-right: 15px;
-  }
-  
-  .comentarioPedido{
-    padding: 50px;
-  }
-  
-  .numTelefono{
-    padding: 50px;
-  }
-  
-  #logomp{
-    width: 100px;
-    height: auto;
-  }
-  
-  .botonMP{
-    --border-color: rgb(46, 46, 46);
-    --color: white;
-    padding: 7px;
-  }
-  
-  #notasPedido{
-    height: 200px;
-    --border-color: rgb(46, 46, 46);
-  }
-  
-  #celular{
-    --border-color: rgb(46, 46, 46);
-  }
-  /* Specific styles for mobile */
-@media only screen and (max-width: 768px) {
-    ion-content {
-      padding: 20px;
-    }
-  
-    .MDP {
-      padding: 10px;
-    }
-  
-    .comentarioPedido {
-      padding: 10px;
-    }
-  
-    .numTelefono {
-      padding: 10px;
-    }
-  
-    ion-button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  
-    ion-icon {
-      font-size: 18px;
+  .total-section {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    
+    .price {
+      color: #00ffdd;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
   }
+}
+
+.payment-methods {
+  padding: 16px;
+
+  .section-title {
+    color: #00ffdd;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    font-weight: normal;
+  }
+}
+
+.payment-option {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
   
+  ion-icon {
+    margin-right: 12px;
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  .discount {
+    color: #00ffdd;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+}
+
+.notes-section {
+  padding: 16px;
+  
+  .section-title {
+    color: #00ffdd;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  ion-textarea {
+    --background: transparent;
+    --border-color: var(--border-color);
+    --border-style: solid;
+    --border-width: 1px;
+    --border-radius: 8px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --placeholder-color: #666;
+    margin-top: 8px;
+  }
+}
+
+ion-button {
+  --background: #00ffdd;
+  --color: #000000;
+  --border-radius: 8px;
+  margin: 16px;
+  font-weight: bold;
+}
+
+.contact-info {
+  padding: 16px;
+  
+  ion-input {
+    --background: transparent;
+    --border-color: var(--border-color);
+    --border-style: solid;
+    --border-width: 1px;
+    --border-radius: 8px;
+    --padding-start: 16px;
+    --color: #ffffff;
+    --placeholder-color: #666;
+  }
+}

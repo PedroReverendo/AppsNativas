@@ -2,7 +2,7 @@
 
 <ion-content *ngIf="product" class="dark-theme">
   <div class="product-container">
-    <!-- Breadcrumb -->
+
     <div class="breadcrumb">
       <span>Inicio</span> > 
       <span>CAMISETAS</span> > 
@@ -11,7 +11,6 @@
       <span class="current">{{ product.Nombre }}</span>
     </div>
 
-    <!-- Product Image and Info -->
     <div class="content-wrapper">
       <div class="product-image">
         <img [src]="product.FotoUrl" [alt]="product.Nombre" />

@@ -10,7 +10,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SudamericanaPage implements OnInit {
   public products: any[] = [];
+
   public filteredProducts: any[] = [];
+
   public teams: any[] = [];
 
   constructor(
@@ -51,16 +53,21 @@ export class SudamericanaPage implements OnInit {
     if (this.products.length && this.teams.length) {
       this.products = this.products.map(product => {
         const team = this.teams.find(team => team.ID_Equipo === product.ID_Equipo);
+
+
+        //IMAGEN
         const base64String = product.Foto ? btoa(
           new Uint8Array(product.Foto.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
         ) : null;
-        
         return {
           ...product,
           teamType: team ? team.Tipo : null,
           FotoUrl: base64String ? this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64String}`) : null,
           PrecioTransferencia: this.calculateTransferPrice(product.Precio)
         };
+
+
+
       }).filter(product => product.teamType === 'Sudamerica');
       
       this.filteredProducts = this.products;
@@ -74,7 +81,9 @@ export class SudamericanaPage implements OnInit {
 
   filterProducts(event: any) {
     const searchTerm = event.target.value?.toLowerCase() || '';
+
     this.filteredProducts = this.products.filter(product => 
+      
       product.Nombre.toLowerCase().includes(searchTerm) ||
       product.Descripcion.toLowerCase().includes(searchTerm)
     );

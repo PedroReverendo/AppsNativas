@@ -18,7 +18,9 @@
 
   <ion-grid>
     <ion-row>
+      
       <ion-col size="6" *ngFor="let product of filteredProducts">
+
         <div class="product-card">
           <div class="product-image-container">
             <img *ngIf="product.FotoUrl" [src]="product.FotoUrl" alt="Producto" class="product-image" />
@@ -39,6 +41,7 @@
           </div>
         </div>
       </ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>

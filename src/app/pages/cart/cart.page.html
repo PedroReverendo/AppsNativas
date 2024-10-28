@@ -7,7 +7,7 @@
   </div>
 
   <div *ngIf="cartItems.length > 0" class="cart-container">
-    <!-- Cart Items -->
+
     <ion-card class="cart-card">
       <ion-card-content>
         <div class="cart-item" *ngFor="let item of cartItems">
@@ -32,7 +32,6 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Summary -->
     <ion-card class="summary-card">
       <ion-card-content>
         <div class="summary-row">
@@ -46,7 +45,6 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Actions -->
     <div class="cart-actions">
       <ion-button expand="block" color="medium" (click)="confirmClearCart()">
         <ion-icon name="trash-outline" slot="start"></ion-icon>

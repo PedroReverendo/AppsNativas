@@ -1,28 +1,52 @@
 <app-navbar></app-navbar>
 <ion-content [fullscreen]="true">
-<div class="MDP" id="main-content">
-  <h1 class="titulo">Medios de pago</h1>
-  <ion-button fill="outline" class="botonMP" expand="block"><ion-icon name="card-outline" class="iconMDP"></ion-icon>Tarjeta de credito y debito</ion-button>
-  <ion-button fill="outline" class="botonMP" expand="block"><ion-icon name="cash-outline" class="iconMDP"></ion-icon>Efectivo</ion-button>
-  <ion-button fill="outline" class="botonMP" expand="block">
-    <ion-icon name="card-outline" class="iconMDP"></ion-icon>
-    <div>Transferencia o deposito bancario<br><span class="descuento">10% de descuento</span></div>
+  <div class="total-section">
+    <div class="price">$ {{totalAmount}}</div>
+  </div>
+
+  <div class="payment-methods">
+    <div class="section-title">Medio de pago</div>
+    
+    <button class="payment-option">
+      <ion-icon name="card-outline"></ion-icon>
+      <span>Tarjeta de crédito y débito</span>
+    </button>
+    
+    <button class="payment-option">
+      <ion-icon name="cash-outline"></ion-icon>
+      <span>Efectivo</span>
+    </button>
+    
+    <button class="payment-option">
+      <ion-icon name="card-outline"></ion-icon>
+      <div>
+        <div>Transferencia o depósito bancario</div>
+        <div class="discount">10% de descuento</div>
+      </div>
+    </button>
+    
+    <button class="payment-option">
+      <img src="https://i.ibb.co/fFVcMCn/result.png" alt="MercadoPago" style="width: 100px;">
+    </button>
+  </div>
+
+  <div class="notes-section">
+    <div class="section-title">Notas de pedido</div>
+    <ion-textarea
+      placeholder="Inserte sus notas aquí"
+      rows="4"
+    ></ion-textarea>
+  </div>
+
+  <div class="contact-info">
+    <div class="section-title">Celular</div>
+    <ion-input
+      type="tel"
+      placeholder="Escriba aquí su número de celular"
+    ></ion-input>
+  </div>
+
+  <ion-button expand="block" (click)="presentConfirmAlert()">
+    Confirmar compra
   </ion-button>
-  <a href="https://www.mercadopago.com.ar/home" target="_blank"><ion-button fill="outline" class="botonMP" expand="block"><ion-img id="logomp" src="https://i.ibb.co/fFVcMCn/result.png"></ion-img></ion-button></a>
-</div>
-  
-
- <div class="comentarioPedido">
-  <h2 class="titulo">Notas de pedido</h2>
-  <ion-input id="notasPedido" label="Inserte sus notas aqui." label-placement="floating" fill="outline" placeholder="Inserte texto"></ion-input>
-</div>
-
-
-<div class="numTelefono">
-  <h4 class="titulo">Celular</h4>
-  <ion-input id="celular" label="Escriba aqui su numero de celular." label-placement="floating" fill="outline" placeholder="Inserte numeros"></ion-input>
-</div>
-<ion-button expand="full" color="primary" (click)="presentConfirmAlert()">
-  Confirmar compra
-</ion-button>
 </ion-content>

@@ -40,6 +40,9 @@ export class HomePage {
     if (this.productos.length === 0) {
       // Si no hay productos en memoria, haz la solicitud GET
       this.service.getProductos().subscribe(callback => {
+        
+        //IMAGEN
+        //pasa de binario a ASCII lo pone en un string y a partir del base64 (ASCII) no pasa a una url convencional
         this.productos = callback.map((producto: any) => {
           if (producto.Foto) {
             const base64String = btoa(
@@ -50,7 +53,9 @@ export class HomePage {
           return producto;
         });
 
-        // Almacena los productos en memoria
+
+        //Utilizo este metodo para no sobrecargar la compilacion del navegadro y reducir tiempos de espera. Cuando los datos se cargan una vez se guardan en el servicio de forma local para una carga mas optimmizada si se llega a entrar a esa seccion. (los datos quedan guardadas por la seccion actual, no es LocalStorage)
+        // Almacena los productos en memoria (servvice)
         this.service.setProductos(this.productos);
 
         // Seleccionar 5 productos aleatorios

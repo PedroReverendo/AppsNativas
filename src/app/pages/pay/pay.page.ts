@@ -9,17 +9,21 @@ import { ServiceService } from '../../service.service';
 })
 export class PayPage implements OnInit {
   cartItems: any[] = [];
+
   totalAmount: number = 0;
 
   constructor(
     private alertController: AlertController,
+
     private navCtrl: NavController,
+
     private serviceService: ServiceService
   ) {}
 
   ngOnInit() {
     this.loadCartSummary();
   }
+
 
   loadCartSummary() {
     const storedCart = localStorage.getItem('cart');
@@ -28,6 +32,8 @@ export class PayPage implements OnInit {
       this.totalAmount = this.cartItems.reduce((total, item) => total + (item.Precio * item.quantity), 0);
     }
   }
+
+
 
   async presentConfirmAlert() {
     const alert = await this.alertController.create({
@@ -53,6 +59,9 @@ export class PayPage implements OnInit {
     await alert.present();
   }
 
+
+
+
   confirmPurchase() {
     const ventaData = {
       items: this.cartItems,
@@ -63,8 +72,10 @@ export class PayPage implements OnInit {
     this.serviceService.addVenta(ventaData).subscribe(
       response => {
         console.log('Compra confirmada y registrada en la base de datos', response);
-        localStorage.removeItem('cart');  // Vaciar el carrito después de la compra
-        this.navCtrl.navigateRoot('/home');  // Redirigir a la página principal
+
+        
+        localStorage.removeItem('cart');
+        this.navCtrl.navigateRoot('/home');
       },
       error => {
         console.error('Error al registrar la venta:', error);
